@@ -33,6 +33,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-# Next.js Webapp on Netlify
+# Demo URL
 
-[Demo url](https://zippy-mandazi-56c05f.netlify.app/)
+[Netlify](https://zippy-mandazi-56c05f.netlify.app/)
+[Cloudflare Pages](https://nextjs-webapp-cloudflare.pages.dev/)
