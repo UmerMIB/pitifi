@@ -35,5 +35,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # Demo URL
 
-- [Netlify](https://zippy-mandazi-56c05f.netlify.app/){:target="_blank"}
-- [Cloudflare Pages](https://nextjs-webapp-cloudflare.pages.dev/){:target="_blank"}
+- [Netlify](https://zippy-mandazi-56c05f.netlify.app/)
+- [Cloudflare Pages](https://nextjs-webapp-cloudflare.pages.dev/)
