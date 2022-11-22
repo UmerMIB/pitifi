@@ -1,5 +1,6 @@
 // import { LockClosedIcon } from "@heroicons/react/20/solid";
 import Header from "../components/Header";
+import Link from "next/link"
 
 export default function Signup() {
   return (
@@ -16,13 +17,12 @@ export default function Signup() {
 
           <div className="w-96 mx-auto">
 
-
             <form className="mt-8 space-y-6" action="#" method="POST">
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="-space-y-px rounded-md shadow-sm">
                 <div>
                   <label htmlFor="contact" className="sr-only">
-                    Contact Name
+                    Name
                   </label>
                   <input
                     id="contact"
@@ -31,51 +31,36 @@ export default function Signup() {
                     autoComplete="contact"
                     required
                     className="my-2 relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                    placeholder="Contact Name"
+                    placeholder="Username"
                   />
                 </div>
                 <div>
                   <label htmlFor="phone" className="sr-only">
-                    Password
+                    Email
                   </label>
                   <input
-                    id="phone"
-                    name="phone"
-                    type="number"
-                    autoComplete="phone"
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="Email Address"
                     required
                     className="my-2 relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                    placeholder="Phone Number"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="property" className="sr-only">
-                    property
+                    Password
                   </label>
                   <input
-                    id="property"
-                    name="property"
-                    type="property"
-                    autoComplete="current-property"
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    placeholder="Password"
                     required
                     className="my-2 relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                    placeholder="Property Name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="country" className="sr-only">
-                    country
-                  </label>
-                  <input
-                    id="country"
-                    name="country"
-                    type="country"
-                    autoComplete="current-country"
-                    required
-                    className="my-2 relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                    placeholder="Country"
                   />
                 </div>
 
@@ -95,7 +80,6 @@ export default function Signup() {
                       className="ml-2 text-sm text-gray-900 whitespace-normal"
                     >
                       I agree to the
-
                       <a
                         href="#"
                         className="ml-1 font-medium text-indigo-600 hover:text-indigo-500"
@@ -134,12 +118,12 @@ export default function Signup() {
                 <p className="font-medium">I already have an acccount</p>
               </div>
               <div>
-                <button
-                  type="button"
+                <Link
+                  href="/login"
                   className="group relative flex w-24 justify-center border border-[#404c9c] py-2 px-4 text-sm font-normal text-[#404c9c] hover:bg-[#404c9c] hover:text-white"
                 >
                   Sign in
-                </button>
+                </Link>
               </div>
             </div>
 
