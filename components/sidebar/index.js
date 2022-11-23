@@ -77,43 +77,12 @@ export default function Sidebar() {
                 leaveTo="-translate-x-full"
               >
                 <Disclosure.Panel className="relative flex max-w-xs flex-1 w-64 flex-col bg-white">
-                  {/* <Transition.Child
-                    as={Fragment}
-                    enter="ease-in-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in-out duration-300"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                  >
-                    <div className="pt-2">
-                      <button
-                        type="button"
-                        className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                        onClick={() => setSidebarOpen(false)}
-                      >
-                        <span className="sr-only">Close sidebar</span>
-                        <XMarkIcon
-                          className="h-6 w-6 text-gray-600
-                          "
-                          aria-hidden="true"
-                        />
-                      </button>
-                    </div>
-                  </Transition.Child> */}
                   <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-shrink-0 items-center px-4">
-                        <img
-                          className="h-8 w-auto"
-                          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                          alt="Your Company"
-                        />
-                      </div>
+                    <div className="flex items-center justify-end">
                       <div>
                         <button
                           type="button"
-                          className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                          className="ml-1 pb-3 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                           onClick={() => setSidebarOpen(false)}
                         >
                           <span className="sr-only">Close sidebar</span>
@@ -127,9 +96,9 @@ export default function Sidebar() {
                     </div>
                     <nav className="mt-5 space-y-1 px-2">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          href={item.to}
                           className={classNames(
                             item.current
                               ? "bg-gray-100 text-gray-900"
@@ -147,7 +116,7 @@ export default function Sidebar() {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </nav>
                   </div>
@@ -179,19 +148,20 @@ export default function Sidebar() {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-
-        <div className="flex flex-1 flex-col ">
-          <div className=" top-0 z-10 bg-white pl-1 pt-[0.7rem] sm:pl-3 sm:pt-[0.7rem] border-b">
-            <button
-              type="button"
-              className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center  text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-              onClick={() => setSidebarOpen(true)}
-            >
-              <span className="sr-only">Open sidebar</span>
-              <Bars3Icon className="h-[3rem] w-6" aria-hidden="true" />
-            </button>
+        {sidebarOpen === false && (
+          <div className="flex flex-1 flex-col ">
+            <div className=" top-0 z-10 bg-white pl-1 pt-[0.7rem] sm:pl-3 sm:pt-[0.7rem] border-b">
+              <button
+                type="button"
+                className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center  text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                onClick={() => setSidebarOpen(true)}
+              >
+                <span className="sr-only">Open sidebar</span>
+                <Bars3Icon className="h-[3rem] w-6" aria-hidden="true" />
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

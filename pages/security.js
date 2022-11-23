@@ -1,7 +1,12 @@
 import React from "react";
+import BackgroundLayout from "../components/layout";
 
 const security = () => {
-  return <div>security</div>;
+  return (
+    <>
+      <BackgroundLayout></BackgroundLayout>
+    </>
+  );
 };
 
 export default security;

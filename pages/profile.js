@@ -1,7 +1,12 @@
 import React from "react";
+import BackgroundLayout from "../components/layout";
 
 const profile = () => {
-  return <div>profile</div>;
+  return (
+    <>
+      <BackgroundLayout></BackgroundLayout>
+    </>
+  );
 };
 
 export default profile;

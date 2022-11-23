@@ -1,7 +1,12 @@
 import React from "react";
+import BackgroundLayout from "../components/layout";
 
 const payment = () => {
-  return <div>payment</div>;
+  return (
+    <>
+      <BackgroundLayout></BackgroundLayout>
+    </>
+  );
 };
 
 export default payment;
