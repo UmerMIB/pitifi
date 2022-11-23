@@ -1,11 +1,19 @@
-import { PaperClipIcon } from '@heroicons/react/20/solid'
+import { PaperClipIcon } from "@heroicons/react/20/solid";
 
 export default function Example() {
   return (
     <>
       <div>
-        <h3 className="text-lg font-medium leading-6 text-gray-900">Applicant Information</h3>
-        <p className="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p>
+        <h3 className="text-2xl font-medium leading-6 text-gray-900">
+          Property Info
+        </h3>
+        <div className="mt-5 flex justify-between items-center">
+          <p className=" max-w-2xl text-sm text-gray-500">Logo</p>
+          <p className=" mr-[3.2rem] max-w-2xl text-sm text-gray-500">
+            Add property logo to personalize your property profile.
+          </p>
+          <p className=" max-w-2xl text-sm text-gray-500">Image</p>
+        </div>
       </div>
       <div className="mt-5 border-t border-gray-200">
         <dl className="divide-y divide-gray-200">
@@ -24,7 +32,9 @@ export default function Example() {
             </dd>
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
-            <dt className="text-sm font-medium text-gray-500">Application for</dt>
+            <dt className="text-sm font-medium text-gray-500">
+              Application for
+            </dt>
             <dd className="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <span className="flex-grow">Backend Developer</span>
               <span className="ml-4 flex-shrink-0">
@@ -52,7 +62,9 @@ export default function Example() {
             </dd>
           </div>
           <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
-            <dt className="text-sm font-medium text-gray-500">Salary expectation</dt>
+            <dt className="text-sm font-medium text-gray-500">
+              Salary expectation
+            </dt>
             <dd className="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <span className="flex-grow">$120,000</span>
               <span className="ml-4 flex-shrink-0">
@@ -69,9 +81,11 @@ export default function Example() {
             <dt className="text-sm font-medium text-gray-500">About</dt>
             <dd className="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <span className="flex-grow">
-                Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
-                qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure
-                nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+                Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim
+                incididunt cillum culpa consequat. Excepteur qui ipsum aliquip
+                consequat sint. Sit id mollit nulla mollit nostrud in ea officia
+                proident. Irure nostrud pariatur mollit ad adipisicing
+                reprehenderit deserunt qui eu.
               </span>
               <span className="ml-4 flex-shrink-0">
                 <button
@@ -83,9 +97,8 @@ export default function Example() {
               </span>
             </dd>
           </div>
-     
         </dl>
       </div>
     </>
-  )
+  );
 }
