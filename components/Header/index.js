@@ -16,6 +16,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 import Link from "next/link";
 
 function classNames(...classes) {
@@ -23,6 +24,9 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+  const loginUser = useSelector((state) => state.login.list);
+  console.log(loginUser);
+
   return (
     <Disclosure as="nav" className="border-b h-16 w-full">
       {({ open }) => (
@@ -70,13 +74,13 @@ export default function Header() {
               <div className="flex px-2 lg:px-0">
                 <div className="hidden md:ml-6 md:flex md:space-x-8 items-center justify-center">
                   <Link
-                    href="#"
+                    href="/login"
                     className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                   >
                     Sign in
                   </Link>
                   <Link
-                    href="#"
+                    href="/signup"
                     className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#404c9c] px-4 py-2 text-base font-medium text-white shadow-sm
                      hover:bg-[#4756b4]"
                   >
