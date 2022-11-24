@@ -5,13 +5,11 @@ import Sidebar from "../sidebar";
 const BackgroundLayout = ({ children }) => {
   return (
     <>
-      <div className=" flex h-16 w-full">
+      <div className="h-full inset-0 flex w-full">
         <Sidebar />
         <div className="flex flex-col w-full">
-          <div>
-            <Header />
-          </div>
-          <div className=" w-full mx-auto p-6">{children}</div>
+          <Header />
+          <div className="w-full mx-auto p-6">{children}</div>
         </div>
       </div>
     </>

@@ -53,7 +53,11 @@ export default function Sidebar() {
       */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
-          <Disclosure as="div" className=" border-b" onClose={setSidebarOpen}>
+          <Disclosure
+            as="div"
+            className="sticky inset-0 border-b"
+            onClose={setSidebarOpen}
+          >
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -149,7 +153,7 @@ export default function Sidebar() {
 
         {/* Static sidebar for desktop */}
         {sidebarOpen === false && (
-          <div className=" flex flex-1 flex-col ">
+          <div className=" flex flex-1 flex-col sticky inset-0">
             <div className=" top-0 z-10 bg-white pl-1 pt-[0.7rem] sm:pl-3 sm:pt-[0.7rem] border-b">
               <button
                 type="button"
