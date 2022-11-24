@@ -48,6 +48,8 @@ export default function Example() {
   }
   ```
 */
+
+// --------------------2nd ------------------ //
 export default function Example() {
   return (
     <div>
@@ -86,6 +88,7 @@ export default function Example() {
   }
   ```
 */
+// --------------------3rd ------------------ //
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 
 export default function Example() {
@@ -131,6 +134,7 @@ export default function Example() {
   }
   ```
 */
+// --------------------4th ------------------ //
 export default function Example() {
   return (
     <div>
@@ -168,6 +172,7 @@ export default function Example() {
   }
   ```
 */
+// -------------------- 5th ------------------ //
 export default function Example() {
   return (
     <div>
@@ -208,6 +213,7 @@ export default function Example() {
   }
   ```
 */
+// -------------------- 6th ------------------ //
 import { EnvelopeIcon } from '@heroicons/react/20/solid'
 
 export default function Example() {
@@ -247,6 +253,7 @@ export default function Example() {
   }
   ```
 */
+// -------------------- 7th ------------------ //
 import { QuestionMarkCircleIcon } from '@heroicons/react/20/solid'
 
 export default function Example() {
@@ -286,6 +293,8 @@ export default function Example() {
   }
   ```
 */
+// -------------------- 8th ------------------ //
+
 export default function Example() {
   return (
     <div>
@@ -313,6 +322,7 @@ export default function Example() {
     </div>
   )
 }
+
 /*
   This example requires some changes to your config:
   
@@ -327,6 +337,7 @@ export default function Example() {
   }
   ```
 */
+// --------------------9th ------------------ //
 export default function Example() {
   return (
     <div>
@@ -378,6 +389,7 @@ export default function Example() {
   }
   ```
 */
+// --------------------10th ------------------ //
 export default function Example() {
   return (
     <div className="relative rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-indigo-600 focus-within:ring-1 focus-within:ring-indigo-600">
@@ -413,6 +425,7 @@ export default function Example() {
   }
   ```
 */
+// --------------------11th ------------------ //
 export default function Example() {
   return (
     <div className="isolate -space-y-px rounded-md shadow-sm">
@@ -457,6 +470,7 @@ export default function Example() {
   }
   ```
 */
+// --------------------12th ------------------ //
 export default function Example() {
   return (
     <div>
