@@ -38,11 +38,11 @@ export default function Resetpassword() {
                   <div>
                     <div className="mt-1">
                       <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        autoComplete="current-password"
-                        placeholder="Password"
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="current-email"
+                        placeholder="Email"
                         required
                         className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
