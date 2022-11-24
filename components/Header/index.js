@@ -17,6 +17,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
+import { BsFullscreen, BsQuestionCircle } from "react-icons/bs";
 import Link from "next/link";
 
 function classNames(...classes) {
@@ -24,8 +25,8 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-  const loginUser = useSelector((state) => state.login.list);
-  console.log(loginUser);
+  const loginUser = useSelector((state) => state.login.loginList);
+  // console.log(loginUser);
 
   return (
     <Disclosure as="nav" className="border-b h-16 w-full">
@@ -71,23 +72,34 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              <div className="flex px-2 lg:px-0">
-                <div className="hidden md:ml-6 md:flex md:space-x-8 items-center justify-center">
-                  <Link
-                    href="/login"
-                    className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-                  >
-                    Sign in
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#404c9c] px-4 py-2 text-base font-medium text-white shadow-sm
+              {loginUser.length === 0 ? (
+                <div className="flex px-2 lg:px-0">
+                  <div className="hidden md:ml-6 md:flex md:space-x-8 items-center justify-center">
+                    <Link
+                      href="/login"
+                      className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                    >
+                      Sign in
+                    </Link>
+                    <Link
+                      href="/signup"
+                      className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#404c9c] px-4 py-2 text-base font-medium text-white shadow-sm
                      hover:bg-[#4756b4]"
-                  >
-                    Sign up
-                  </Link>
+                    >
+                      Sign up
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="flex items-center justify-center">
+                  <div className="p-2">
+                    <BsQuestionCircle className="text-xl text-[#4756b4]" />
+                  </div>
+                  <div className="p-2">
+                    <BsFullscreen className="text-xl text-[#4756b4]" />
+                  </div>
+                </div>
+              )}
               <div className="flex items-center md:hidden">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

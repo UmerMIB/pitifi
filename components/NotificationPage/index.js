@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { HiOutlineCheckCircle } from "react-icons/hi2";
+import { HiOutlineCheckCircle } from "react-icons/hi";
 
 const index = (NotifyData) => {
   return (

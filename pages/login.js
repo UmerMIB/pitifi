@@ -2,9 +2,11 @@ import Header from "../components/Header";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 import { loginuser } from "../redux/slices/loginSlice";
 
 export default function Login() {
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const [credetials, setCredetials] = useState({
@@ -20,6 +22,7 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = credetials;
     dispatch(loginuser({ email, password }));
+    router.push("/properties");
   };
 
   return (
@@ -33,7 +36,6 @@ export default function Login() {
                 Sign in
               </h3>
             </div>
-
             <form
               onSubmit={submitForm}
               className="space-y-6"
