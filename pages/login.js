@@ -114,7 +114,7 @@ export default function Login() {
             <div className="flex items-center justify-between my-7">
               <div>
                 <p className="font-medium text-zinc-500 tracking-wide">
-                  Don't have an account
+                  Don&apos;t have an account
                 </p>
               </div>
               <div>

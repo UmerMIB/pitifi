@@ -29,8 +29,8 @@ export default function Resetpassword() {
 
                 <div className="flex items-center justify-center my-8">
                   <p className="text-sm text-zinc-700 text-center">
-                    Enter the email address with your account, and we'll email
-                    you a link to reset your password
+                    Enter the email address with your account, and we&apos;ll
+                    email you a link to reset your password
                   </p>
                 </div>
 
