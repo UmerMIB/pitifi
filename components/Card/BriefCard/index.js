@@ -1,5 +1,6 @@
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
+import { EnvelopeIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Example(data) {
   return (
@@ -18,7 +19,7 @@ export default function Example(data) {
             {data.postalAddress}
           </p>
         </div>
-        <img
+        <Image
           className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
           src={data.imageUrl}
           alt=""
