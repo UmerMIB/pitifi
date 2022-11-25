@@ -5,22 +5,73 @@ import Table from "../components/Table";
 const properties = () => {
   const DataProperty = {
     mainHeading: "Property Info",
-    name: "Logo",
-    para: "Add property logo to personalize your property profile.",
-    button: "Image",
+    logo: "propertyLogo",
+    desc: "Add property logo to personalize your property profile.",
+    img: "Image",
+    dataRow: [
+      {
+        title: "Type",
+        value: "Hotel",
+        button: "Update",
+      },
+      {
+        title: "Name",
+        value: "HotelAgra",
+        button: "Update",
+      },
+      {
+        title: "Romes",
+        value: "25",
+        button: "Update",
+      },
+    ],
   };
   const DataLocation = {
     mainHeading: "Location",
-    name: "Logo",
-    para: "Add property logo to personalize your property profile.",
-    button: "Image",
+    logo: "locationLogo",
+    desc: "Add property logo to personalize your property profile.",
+    img: "Image",
+    dataRow: [
+      {
+        title: "Type",
+        value: "Hotel",
+        button: "Update",
+      },
+      {
+        title: "Name",
+        value: "HotelAgra",
+        button: "Update",
+      },
+      {
+        title: "Romes",
+        value: "25",
+        button: "Update",
+      },
+    ],
   };
 
   const Datataxes = {
     mainHeading: "Taxes",
-    name: "Logo",
-    para: "Add property logo to personalize your property profile.",
-    button: "Image",
+    logo: "taxesLogo",
+    desc: "Add property logo to personalize your property profile.",
+    img: "Image",
+    dataRow: [
+      {
+        title: "Type",
+        value: "Hotel",
+        button: "Update",
+      },
+      {
+        title: "Name",
+        value: "HotelAgra",
+        button: "Update",
+      },
+      {
+        title: "Romes",
+        value: "25",
+        button: "Update",
+      },
+    ],
   };
 
   return (
