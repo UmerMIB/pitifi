@@ -25,8 +25,8 @@ export default function Example({ data }) {
               {data.loginAccess && (
                 <Link
                   href="#"
-                  className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#404c9c] px-4 py-2 text-base font-medium text-white shadow-sm
-               hover:bg-[#4756b4]"
+                  className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#ce372e] px-4 py-[5px] text-base font-medium text-white shadow-sm
+               hover:bg-[#ec3f35]"
                 >
                   {data.loginAccess}
                 </Link>
