@@ -40,12 +40,17 @@ export default function Signup() {
     <>
       <Header />
       {renderPage === false ? (
-        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-          <div className="w-full max-w-md space-y-8 border border-gray-300">
-            <div className="flex items-center justify-center py-3 bg-slate-100">
+        <div className="flex min-h-full items-center justify-center py-9 px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-md shadow sm:rounded-lg">
+            {/* <div className="flex items-center justify-center py-3 bg-slate-100">
               <p className="text-base font-medium">
                 Create your WebApp Account
               </p>
+            </div> */}
+            <div className="flex items-center justify-center my-6">
+              <h3 className="text-3xl font-medium text-zinc-600 tracking-wider">
+                Sign Up
+              </h3>
             </div>
 
             <div className="w-96 mx-auto">
@@ -56,8 +61,8 @@ export default function Signup() {
                 method="POST"
               >
                 <input type="hidden" name="remember" defaultValue="true" />
-                <div className="-space-y-px rounded-md shadow-sm">
-                  <div>
+                <div className=" rounded-md shadow-sm">
+                  <div className="mt-4">
                     <label htmlFor="name" className="sr-only">
                       Name
                     </label>
@@ -69,11 +74,11 @@ export default function Signup() {
                       value={credetials.name}
                       onChange={onChangehandler}
                       required
-                      className="my-2 relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full  text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       placeholder="Username"
                     />
                   </div>
-                  <div>
+                  <div className="mt-4">
                     <label htmlFor="phone" className="sr-only">
                       Email
                     </label>
@@ -86,11 +91,11 @@ export default function Signup() {
                       onChange={onChangehandler}
                       placeholder="Email Address"
                       required
-                      className="my-2 relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full  text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
 
-                  <div>
+                  <div className="mt-4">
                     <label htmlFor="property" className="sr-only">
                       Password
                     </label>
@@ -103,7 +108,7 @@ export default function Signup() {
                       onChange={onChangehandler}
                       placeholder="Password"
                       required
-                      className="my-2 relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-3 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full  text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
                 </div>
@@ -149,7 +154,8 @@ export default function Signup() {
                   <button
                     type="submit"
                     onClick={() => setRenderPage(true)}
-                    className="group relative flex w-full justify-center border border-transparent bg-[#404c9c] py-3 px-4 text-base font-medium text-white hover:bg-white hover:text-[#404c9c] hover:border-[#404c9c] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="flex w-full justify-center rounded-md tracking-wider border border-transparent bg-[#404c9c] py-2 px-4 text-2xl font-normal text-white shadow-sm hover:bg-white hover:text-[#404c9c] 
+                    hover:border-[#404c9c] hover:font-semibold"
                   >
                     Sign up
                   </button>
@@ -163,7 +169,7 @@ export default function Signup() {
                 <div>
                   <Link
                     href="/login"
-                    className="group relative flex w-24 justify-center border border-[#404c9c] py-2 px-4 text-sm font-normal text-[#404c9c] hover:bg-[#404c9c] hover:text-white"
+                    className="group relative flex w-24 justify-center text-lg underline underline-offset-3 py-3 px-4 font-semibold text-[#404c9c] hover:text-[#5b6ace]"
                   >
                     Sign in
                   </Link>
