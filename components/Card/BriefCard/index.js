@@ -22,7 +22,9 @@ export default function Example(data) {
         <Image
           className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
           src={data.imageUrl}
-          alt=""
+          alt="Brief card Img"
+          width={`40`}
+          height={`40`}
         />
       </div>
       <div>
