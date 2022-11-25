@@ -1,10 +1,12 @@
-import { PaperClipIcon } from "@heroicons/react/20/solid";
+// import { PaperClipIcon } from "@heroicons/react/20/solid";
+
+import Image from "next/image";
 
 export default function Example({ data }) {
   return (
     <>
       {/* Table */}
-      <div className="my-12 border rounded-lg w-9/12 mx-auto ">
+      <div className="my-12 border rounded-lg w-7/12 mx-auto ">
         <div className="mt-3 px-6">
           <h3 className="text-2xl dark:text-white font-medium leading-6 text-gray-900">
             {data.mainHeading}
@@ -16,9 +18,20 @@ export default function Example({ data }) {
             <p className="  max-w-2xl text-sm dark:text-white text-gray-500">
               {data.desc}
             </p>
-            <p className=" max-w-2xl text-sm dark:text-white text-gray-500">
-              {data.img}
-            </p>
+            {data.img && (
+              <Image
+                className="flex-shrink-0 flex items-center justify-center rounded-full w-14 text-white text-sm font-medium "
+                alt="Table Image"
+                src={data.img}
+                width={`40`}
+                height={`40`}
+              />
+            )}
+            {data.text && (
+              <p className=" max-w-2xl text-sm dark:text-white text-gray-500">
+                {data.text}
+              </p>
+            )}
           </div>
         </div>
         <div className=" mt-5 border-t border-gray-200">
