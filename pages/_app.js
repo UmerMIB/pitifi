@@ -13,7 +13,7 @@ const MyApp = ({ Component, ...rest }) => {
     if (typeof window !== "undefined") {
       setIsWindowActive(true);
     }
-  }, [typeof window]);
+  }, []);
 
   return (
     <>
