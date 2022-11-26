@@ -1,13 +1,15 @@
 import Header from "../components/Header";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { loginuser } from "../redux/slices/loginSlice";
 
 export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const loginUser = useSelector((state) => state.login.loginList);
 
   const [credetials, setCredetials] = useState({
     email: "",
@@ -22,7 +24,10 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = credetials;
     dispatch(loginuser({ email, password }));
-    router.push("/properties");
+    if (loginUser) {
+      localStorage.setItem("authenticated", true);
+      router.push("/properties");
+    }
   };
 
   return (

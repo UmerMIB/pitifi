@@ -21,7 +21,6 @@ const loginSlice = createSlice({
     },
     loginuser: (state, action) => {
       state.loginList = [
-        ...state.loginList,
         {
           email: action.payload.email,
           password: action.payload.password,

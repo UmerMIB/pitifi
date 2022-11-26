@@ -19,9 +19,9 @@ export default function Resetconfirm() {
 
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="mt-8 w-full sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 sm:rounded-lg sm:px-10">
-            {notify === false ? (
-              <>
+          {notify === false ? (
+            <>
+              <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <div className="flex items-center justify-center my-6">
                   <h3 className="text-3xl font-medium text-zinc-600 tracking-wider">
                     Reset Password
@@ -75,11 +75,11 @@ export default function Resetconfirm() {
                     </button>
                   </div>
                 </form>
-              </>
-            ) : (
-              <NotificationPage {...NotifyData} />
-            )}
-          </div>
+              </div>
+            </>
+          ) : (
+            <NotificationPage {...NotifyData} />
+          )}
         </div>
       </div>
     </>
