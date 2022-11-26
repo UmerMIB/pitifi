@@ -111,26 +111,30 @@ export default function Header() {
                   {/* SEARCHBAR */}
                   <div className="w-full flex px-2 lg:px-0">
                     <div className="w-full hidden md:ml-6 md:flex items-center justify-center">
-                      <div className="w-[90%] ">
-                        <label htmlFor="search" className="sr-only">
-                          Search
+                      <form
+                        className="flex w-full md:ml-0"
+                        action="#"
+                        method="GET"
+                      >
+                        <label htmlFor="search-field" className="sr-only">
+                          Search all files
                         </label>
-                        <div className="relative">
-                          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <div className="relative w-full ml-3 text-gray-400 focus-within:text-gray-600">
+                          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
                             <MagnifyingGlassIcon
-                              className="h-5 w-5 text-gray-400"
+                              className="h-5 w-5 flex-shrink-0"
                               aria-hidden="true"
                             />
                           </div>
                           <input
-                            id="search"
-                            name="search"
-                            className="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                            name="search-field"
+                            id="search-field"
+                            className="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0"
                             placeholder="Search"
                             type="search"
                           />
                         </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                   {/* ICONS AND PROFILE DROPDOWN */}
