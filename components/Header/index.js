@@ -109,115 +109,123 @@ export default function Header() {
               {localStorage.getItem("authenticated") ? (
                 <>
                   {/* SEARCHBAR */}
-                  <div className=" flex px-2 lg:px-0">
-                    <div className=" hidden md:ml-6 md:flex items-center justify-center">
-                      <div className="w-full max-w-lg lg:max-w-xs">
-                        <label htmlFor="search" className="sr-only">
-                          Search
+                  <div className="w-full flex px-2 lg:px-0">
+                    <div className="w-full hidden md:ml-6 md:flex items-center justify-center">
+                      <form
+                        className="flex w-full md:ml-0"
+                        action="#"
+                        method="GET"
+                      >
+                        <label htmlFor="search-field" className="sr-only">
+                          Search all files
                         </label>
-                        <div className="relative">
-                          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <div className="relative w-full ml-3 text-gray-400 focus-within:text-gray-600">
+                          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
                             <MagnifyingGlassIcon
-                              className="h-5 w-5 text-gray-400"
+                              className="h-5 w-5 flex-shrink-0"
                               aria-hidden="true"
                             />
                           </div>
                           <input
-                            id="search"
-                            name="search"
-                            className="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                            name="search-field"
+                            id="search-field"
+                            className="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0"
                             placeholder="Search"
                             type="search"
                           />
                         </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                   {/* ICONS AND PROFILE DROPDOWN */}
-                  <div className="flex items-center justify-center">
-                    <div className="p-2">
-                      <BsQuestionCircle className="text-xl text-[#4756b4] cursor-pointer" />
-                    </div>
-                    {/* TOOGLE SCREEN ICONS */}
-                    <div className="p-2">
-                      {toggleScreen === false ? (
-                        <BsFullscreen
-                          className="text-xl text-[#4756b4] cursor-pointer"
-                          onClick={openFullscreen}
-                        />
-                      ) : (
-                        <BsFullscreenExit
-                          className="text-xl text-[#4756b4] cursor-pointer"
-                          onClick={closeFullscreen}
-                        />
-                      )}
-                    </div>
-
-                    {/* profile DropDown */}
-                    <Menu as="div" className="relative ml-3">
-                      <div>
-                        <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                          <span className="sr-only">Open user menu</span>
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
-                          />
-                        </Menu.Button>
+                  <div className="flex px-2 lg:px-0">
+                    <div className="flex items-center justify-center">
+                      <div className="p-2">
+                        <BsQuestionCircle className="text-xl text-[#4756b4] cursor-pointer" />
                       </div>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <Link
-                                href="#"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                              >
-                                Your Profile
-                              </Link>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <Link
-                                href="#"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                              >
-                                Settings
-                              </Link>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <Link
-                                href="/login"
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                                onClick={() => logoutHandle()}
-                              >
-                                Sign out
-                              </Link>
-                            )}
-                          </Menu.Item>
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
+                      {/* TOOGLE SCREEN ICONS */}
+                      <div className="p-2">
+                        {toggleScreen === false ? (
+                          <BsFullscreen
+                            className="text-xl text-[#4756b4] cursor-pointer"
+                            onClick={openFullscreen}
+                          />
+                        ) : (
+                          <BsFullscreenExit
+                            className="text-xl text-[#4756b4] cursor-pointer"
+                            onClick={closeFullscreen}
+                          />
+                        )}
+                      </div>
+
+                      {/* profile DropDown */}
+                      <Menu as="div" className="relative ml-3">
+                        <div>
+                          <Menu.Button className="flex w-[32px] rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <span className="sr-only">Open user menu</span>
+                            <Image
+                              className="h-8 w-8 rounded-full"
+                              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                              alt="Profile Pic"
+                              width={`40`}
+                              height={`40`}
+                            />
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Item>
+                              {({ active }) => (
+                                <Link
+                                  href="#"
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  Your Profile
+                                </Link>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <Link
+                                  href="#"
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  Settings
+                                </Link>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <Link
+                                  href="/login"
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                  onClick={() => logoutHandle()}
+                                >
+                                  Sign out
+                                </Link>
+                              )}
+                            </Menu.Item>
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
+                    </div>
                   </div>
                 </>
               ) : (

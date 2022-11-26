@@ -13,7 +13,7 @@ const MyApp = ({ Component, ...rest }) => {
       setIsWindowActive(true);
       document.getElementsByTagName("html")[0].classList.add("dark");
     }
-  }, [typeof window]);
+  }, []);
 
   return (
     <>
