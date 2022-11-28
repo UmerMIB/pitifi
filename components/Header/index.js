@@ -65,7 +65,7 @@ export default function Header() {
   /* Close fullscreen */
   const closeFullscreen = () => {
     if (document.exitFullscreen) {
-      document.exitFullscreen();
+      document.exitFullscreen().catch(() => {});
       setToggleScreen(false);
     } else if (document.webkitExitFullscreen) {
       /* Safari */
@@ -79,10 +79,10 @@ export default function Header() {
   };
 
   return (
-    <Disclosure as="nav" className="border-b bg-white sticky inset-0 w-full">
+    <Disclosure as="nav" className="border-b bg-white sticky inset-0 ">
       {({ open }) => (
         <>
-          <div className="mx-auto  px-2 sm:px-4 ">
+          <div className={"  px-2 sm:px-4 mx-12"}>
             <div className="flex h-16 justify-between">
               <div className="flex px-2 lg:px-0">
                 {/* HEADER IMAGE */}
