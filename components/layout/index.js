@@ -19,3 +19,8 @@ const BackgroundLayout = ({ children }) => {
 };
 
 export default BackgroundLayout;
+/**
+ * <BackgriundLayout>
+ * <p> my name is danyal</p>
+ * </BackgroundLayout>
+ */
