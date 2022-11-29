@@ -13,14 +13,14 @@ export default function Example({ data }) {
         height={`40`}
       />
 
-      <div className="flex flex-1 dark:bg-black bg-white items-center justify-between  rounded-r-md ">
+      <div className="flex flex-1  bg-white items-center justify-between  rounded-r-md ">
         <div className="flex-1 grid gap-5 pl-2 py-2 text-sm">
-          <div className="font-medium dark:text-white text-gray-900  hover:text-gray-600">
+          <div className="font-medium  text-gray-900  hover:text-gray-600">
             {data.name}
           </div>
           <div className="flex justify-between items-center">
-            <p className="dark:text-white text-gray-600">{data.desc}</p>
-            <p className="dark:text-white text-gray-600">{data.address}</p>
+            <p className=" text-gray-600">{data.desc}</p>
+            <p className=" text-gray-600">{data.address}</p>
             {data.loginAccess && (
               <Link
                 href="#"
@@ -30,9 +30,7 @@ export default function Example({ data }) {
                 {data.loginAccess}
               </Link>
             )}
-            {data.loginIp && (
-              <p className="dark:text-white text-gray-600">{data.loginIp}</p>
-            )}
+            {data.loginIp && <p className=" text-gray-600">{data.loginIp}</p>}
           </div>
         </div>
         <div className="flex-shrink-0 pr-2">

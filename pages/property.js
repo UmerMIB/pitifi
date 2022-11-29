@@ -78,10 +78,10 @@ const properties = () => {
     <>
       <BackgroundLayout>
         <div className="mb-8">
-          <h2 className="dark:text-white text-4xl font-medium  text-gray-700 text-center ">
+          <h2 className=" text-4xl font-medium  text-gray-700 text-center ">
             Property
           </h2>
-          <p className="dark:text-white mt-8 text-sm text-gray-500 text-center">
+          <p className=" mt-8 text-sm text-gray-500 text-center">
             Manage property Information, location & taxes
           </p>
         </div>

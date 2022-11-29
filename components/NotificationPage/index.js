@@ -5,17 +5,17 @@ import { HiOutlineCheckCircle } from "react-icons/hi";
 const index = (NotifyData) => {
   return (
     <>
-      <div className="flex items-center justify-center dark:text-white mb-5 text-[#404c9c]">
+      <div className="flex items-center justify-center  mb-5 text-[#404c9c]">
         <HiOutlineCheckCircle className="text-[3rem]" />
       </div>
       <div className="flex items-center justify-center">
-        <h3 className="text-[1.70rem] dark:text-white font-medium text-zinc-600 tracking-wider">
+        <h3 className="text-[1.70rem]  font-medium text-zinc-600 tracking-wider">
           {NotifyData.heading}
         </h3>
       </div>
 
-      <div className="flex dark:text-white items-center justify-center my-8">
-        <p className="text-base dark:text-white font-medium tracking-wider text-zinc-600 text-center">
+      <div className="flex  items-center justify-center my-8">
+        <p className="text-base  font-medium tracking-wider text-zinc-600 text-center">
           {NotifyData.para}
         </p>
       </div>
