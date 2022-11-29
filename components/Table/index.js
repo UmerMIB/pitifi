@@ -6,7 +6,7 @@ export default function Example({ data }) {
   return (
     <>
       {/* Table */}
-      <div className="my-12 border rounded-lg w-7/12 mx-auto ">
+      <div className="my-12 border rounded-lg md:w-full lg:w-9/12 sm:w-full mx-auto ">
         <div className="mt-3 px-6">
           <h3 className="text-2xl dark:text-white font-medium leading-6 text-gray-900">
             {data.mainHeading}

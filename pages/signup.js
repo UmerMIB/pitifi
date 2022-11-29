@@ -155,7 +155,9 @@ export default function Signup() {
 
               <div className="flex items-center justify-between my-7">
                 <div>
-                  <p className="font-medium">I already have an acccount</p>
+                  <p className="font-medium text-zinc-500 tracking-wide">
+                    I already have an acccount
+                  </p>
                 </div>
                 <div>
                   <Link
