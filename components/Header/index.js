@@ -1,21 +1,7 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
   BsFullscreen,
   BsQuestionCircle,
@@ -24,6 +10,9 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+
+import { opensidebar } from "../../redux/slices/sidebarSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -31,6 +20,8 @@ function classNames(...classes) {
 
 export default function Header() {
   const [toggleScreen, setToggleScreen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -78,13 +69,45 @@ export default function Header() {
     }
   };
 
+  const sidebarState = useSelector((state) => state.aside.sidebar);
+
   return (
-    <Disclosure as="nav" className="border-b bg-white sticky inset-0 ">
+    <Disclosure as="header" className="border-b bg-white sticky inset-0">
       {({ open }) => (
         <>
-          <div className={"  px-2 sm:px-4 mx-12"}>
+          <div className={" px-2 sm:px-4"}>
             <div className="flex h-16 justify-between">
-              <div className="flex px-2 lg:px-0">
+              <div className="flex px-2 lg:px-0 w-60" style={{ gap: "20px" }}>
+                {/* BUTTON HAMBURGER */}
+                {localStorage.getItem("authenticated") && (
+                  <div className="flex items-center bg-white  ">
+                    {sidebarState === false ? (
+                      <button
+                        type="button"
+                        className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center  text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        onClick={() => dispatch(opensidebar(true))}
+                      >
+                        <span className="sr-only">Open sidebar</span>
+                        <Bars3Icon
+                          className="h-[3rem] w-6"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="ml-1 py-3 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        onClick={() => dispatch(opensidebar(false))}
+                      >
+                        <span className="sr-only">Close sidebar</span>
+                        <XMarkIcon
+                          className="h-6 w-6 text-gray-600"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    )}
+                  </div>
+                )}
                 {/* HEADER IMAGE */}
                 <div
                   className="flex flex-shrink-0 items-center"
@@ -109,7 +132,7 @@ export default function Header() {
               {localStorage.getItem("authenticated") ? (
                 <>
                   {/* SEARCHBAR */}
-                  <div className="w-full flex px-2 lg:px-0">
+                  <div className="w-[80%] flex px-2 lg:px-0">
                     <div className="w-full hidden md:ml-6 md:flex items-center justify-center">
                       <form
                         className="flex w-full md:ml-0"
@@ -159,8 +182,8 @@ export default function Header() {
                       </div>
 
                       {/* profile DropDown */}
-                      <Menu as="div" className="relative ml-3">
-                        <div>
+                      <Menu as="div" className="relative">
+                        <div className="p-2">
                           <Menu.Button className="flex w-[32px] rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">Open user menu</span>
                             <Image
@@ -229,8 +252,8 @@ export default function Header() {
                   </div>
                 </>
               ) : (
+                //  SIGNIN AND SIGNUP BUTTON
                 <div className="flex px-2 lg:px-0">
-                  {/* SIGNIN AND SIGNUP BUTTON */}
                   <div className="hidden md:ml-6 md:flex md:space-x-8 items-center justify-center">
                     <Link
                       href="/login"

@@ -1,10 +1,6 @@
-import { Fragment, useState } from "react";
-import { Dialog, Disclosure, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  CurrencyDollarIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Fragment } from "react";
+import { Disclosure, Transition } from "@headlessui/react";
+import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import {
   BuildingOffice2Icon,
   ShieldCheckIcon,
@@ -12,6 +8,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const navigation = [
   { name: "Profile", to: "/profile", icon: UserCircleIcon, current: true },
@@ -40,16 +37,16 @@ function classNames(...classes) {
 }
 
 export default function Sidebar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarState = useSelector((state) => state.aside.sidebar);
 
   return (
     <>
-      <Transition.Root show={sidebarOpen} as={Fragment}>
+      <Transition.Root show={sidebarState} as={Fragment}>
         <Disclosure
           as="aside"
-          className="  sticky top-[65px] border-b "
-          style={{ height: "calc(100vh - 4.1rem)" }}
-          onClose={setSidebarOpen}
+          className="  sticky top-[64px] border-b "
+          style={{ height: "calc(100vh - 4rem)" }}
+          // onClose={sidebarState}
         >
           <Transition.Child
             as={Fragment}
@@ -129,33 +126,6 @@ export default function Sidebar() {
           </div>
         </Disclosure>
       </Transition.Root>
-
-      {/* Static sidebar for desktop */}
-      <div className="fixed top-0 z-10 bg-white pl-1 pt-[0.7rem] sm:pl-3 sm:pt-[0.7rem] ">
-        {sidebarOpen === false ? (
-          <button
-            type="button"
-            className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center  text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-            onClick={() => setSidebarOpen(true)}
-          >
-            <span className="sr-only">Open sidebar</span>
-            <Bars3Icon className="h-[3rem] w-6" aria-hidden="true" />
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="ml-1 py-3 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-            onClick={() => setSidebarOpen(false)}
-          >
-            <span className="sr-only">Close sidebar</span>
-            <XMarkIcon
-              className="h-6 w-6 text-gray-600
-                          "
-              aria-hidden="true"
-            />
-          </button>
-        )}
-      </div>
     </>
   );
 }
