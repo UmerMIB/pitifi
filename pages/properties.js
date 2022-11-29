@@ -29,13 +29,13 @@ const properties = () => {
       <BackgroundLayout>
         <div className="mb-8">
           <h2 className=" text-4xl font-medium dark:text-white  text-gray-700 text-center ">
-            Manage Propery
+            Manage Property
           </h2>
           <p className="mt-8 text-sm dark:text-white text-gray-500 text-center">
             Add or remove properties you manage or own here
           </p>
         </div>
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-col-2 sm:grid-cols-2 lg:grid-cols-2 w-[48rem] mx-auto">
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-col-2 sm:grid-cols-1 lg:grid-cols-2 w-[48rem] mx-auto">
           {Data.map((data, i) => {
             return <BriefCard key={i} {...data} />;
           })}

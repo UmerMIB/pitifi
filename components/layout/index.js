@@ -8,9 +8,7 @@ const BackgroundLayout = ({ children }) => {
       <div className="flex flex-col w-full">
         <Header />
         <div className="flex w-full">
-          <div>
-            <Sidebar />
-          </div>
+          <Sidebar />
           <main className="w-full mx-auto p-6">{children}</main>
         </div>
       </div>
@@ -19,8 +17,3 @@ const BackgroundLayout = ({ children }) => {
 };
 
 export default BackgroundLayout;
-/**
- * <BackgriundLayout>
- * <p> my name is danyal</p>
- * </BackgroundLayout>
- */
