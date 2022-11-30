@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useCallback, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { opensidebar } from "../../redux/slices/sidebarSlice";
+import { adduser, loginuser } from "../../redux/slices/loginSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -27,6 +28,7 @@ export default function Header() {
 
   const logoutHandle = () => {
     localStorage.removeItem("authenticated");
+    dispatch(loginuser(false));
     router.push("/login");
   };
 
@@ -67,6 +69,38 @@ export default function Header() {
       document.msExitFullscreen();
       setToggleScreen(false);
     }
+  };
+
+  // useEffect(() => {
+  //   document.addEventListener("keydown", (event) => {
+  //     // if (event.key === "Escape") {
+  //     setToggleScreen(false);
+  //     closeFullscreen();
+  //     // }
+  //     console.log(`Key: ${event.key} with keycode has been pressed`);
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  // const escFunction = useCallback((event) => {
+  //   if (event.keyCode === 27) {
+  //     console.log("----logic----");
+  //     setToggleScreen(false);
+  //     closeFullscreen();
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", detectKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const detectKeyDown = (e) => {
+    if (e.key) {
+      setToggleScreen(false);
+      closeFullscreen();
+    }
+    console.log(`Key: ${e.key}`);
   };
 
   const sidebarState = useSelector((state) => state.aside.sidebar);
@@ -258,6 +292,7 @@ export default function Header() {
                     <Link
                       href="/login"
                       className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                      onClick={() => dispatch(adduser(false))}
                     >
                       Sign in
                     </Link>
@@ -265,6 +300,7 @@ export default function Header() {
                       href="/signup"
                       className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#404c9c] px-4 py-2 text-base font-medium text-white shadow-sm
                      hover:bg-[#4756b4]"
+                      onClick={() => dispatch(adduser(false))}
                     >
                       Sign up
                     </Link>

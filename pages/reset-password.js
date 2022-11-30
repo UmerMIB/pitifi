@@ -2,6 +2,8 @@ import NotificationPage from "../components/NotificationPage";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Link from "next/link";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export default function Resetpassword() {
   const [notify, setNotify] = useState(false);
@@ -12,6 +14,23 @@ export default function Resetpassword() {
     button: "Check Email",
     link: "reset-password-confirm",
   };
+
+  const initialValues = {
+    email: "",
+  };
+
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema: Yup.object({
+        email: Yup.string()
+          .email("Invalid email address")
+          .required("Email Required"),
+      }),
+      onSubmit: (values, action) => {
+        console.log(values), setNotify(true), action.resetForm();
+      },
+    });
 
   return (
     <>
@@ -34,7 +53,12 @@ export default function Resetpassword() {
                   </p>
                 </div>
 
-                <form className="space-y-5" action="#" method="POST">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-5"
+                  action="#"
+                  method="POST"
+                >
                   <div>
                     <div className="mt-1">
                       <input
@@ -43,16 +67,22 @@ export default function Resetpassword() {
                         type="email"
                         autoComplete="current-email"
                         placeholder="Email"
-                        required
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         className="block w-full text-zinc-600 appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
+                      {errors.email && touched.email ? (
+                        <p className="text-[#b22b27] text-[1rem]">
+                          {errors.email}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                   <div>
                     <button
-                      type="button"
+                      type="submit"
                       className="flex w-full justify-center rounded-md tracking-wider border border-transparent bg-[#404c9c] py-2 px-4 text-xl font-normal text-white shadow-sm hover:bg-white hover:text-[#404c9c] hover:border-[#404c9c] hover:font-semibold"
-                      onClick={() => setNotify(true)}
                     >
                       Send Reset Link
                     </button>
