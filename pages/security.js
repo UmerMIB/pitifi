@@ -46,11 +46,11 @@ const security = () => {
         <Table data={LoginSecurity} />
         <div className="my-12 border rounded-lg md:w-full lg:w-9/12 sm:w-full mx-auto">
           <div className="mt-5 px-6">
-            <h3 className="text-2xl dark:text-white font-medium leading-6 text-gray-900">
+            <h3 className="text-2xl  font-medium leading-6 text-gray-900">
               Login History
             </h3>
             <div className="mt-3 flex  justify-between items-center">
-              <p className=" max-w-2xl text-sm dark:text-white text-gray-500">
+              <p className=" max-w-2xl text-sm  text-gray-500">
                 View all the devices you previously used to login
               </p>
             </div>

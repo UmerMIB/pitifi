@@ -44,7 +44,7 @@ export default function Sidebar() {
       <Transition.Root show={sidebarState} as={Fragment}>
         <Disclosure
           as="aside"
-          className="  sticky top-[64px] border-b "
+          className="  sticky top-[65px] border-b "
           style={{ height: "calc(100vh - 4.1rem)" }}
           // onClose={sidebarState}
         >

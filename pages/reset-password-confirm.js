@@ -38,7 +38,7 @@ export default function Resetconfirm() {
                         autoComplete="current-password"
                         placeholder="Password"
                         required
-                        className="block w-full dark:text-zinc-700 appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full text-zinc-600 appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
                   </div>
@@ -52,7 +52,7 @@ export default function Resetconfirm() {
                         autoComplete="current-confirmpassword"
                         placeholder="Confirm Password"
                         required
-                        className="block w-full appearance-none rounded-md border dark:text-zinc-700 border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full text-zinc-600 appearance-none rounded-md border  border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
                   </div>

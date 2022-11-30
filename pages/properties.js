@@ -28,10 +28,10 @@ const properties = () => {
     <>
       <BackgroundLayout>
         <div className="mb-8">
-          <h2 className=" text-4xl font-medium dark:text-white  text-gray-700 text-center ">
+          <h2 className=" text-4xl font-medium  text-gray-700 text-center ">
             Manage Property
           </h2>
-          <p className="mt-8 text-sm dark:text-white text-gray-500 text-center">
+          <p className="mt-8 text-sm  text-gray-500 text-center">
             Add or remove properties you manage or own here
           </p>
         </div>

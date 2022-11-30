@@ -42,11 +42,6 @@ export default function Signup() {
       {renderPage === false ? (
         <div className="flex min-h-full items-center justify-center py-9 px-4 sm:px-6 lg:px-8">
           <div className="w-full max-w-md shadow bg-white sm:rounded-lg">
-            {/* <div className="flex items-center justify-center py-3 bg-slate-100">
-              <p className="text-base font-medium">
-                Create your WebApp Account
-              </p>
-            </div> */}
             <div className="flex items-center justify-center my-6">
               <h3 className="text-3xl font-medium text-zinc-700 tracking-wider">
                 Sign Up
@@ -71,7 +66,7 @@ export default function Signup() {
                       value={credetials.name}
                       onChange={onChangehandler}
                       required
-                      className="block w-full dark:text-zinc-700  text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full text-zinc-600 text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       placeholder="Username"
                     />
                   </div>
@@ -85,7 +80,7 @@ export default function Signup() {
                       onChange={onChangehandler}
                       placeholder="Email Address"
                       required
-                      className="block w-full  dark:text-zinc-700  text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full text-zinc-600   text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
 
@@ -99,7 +94,7 @@ export default function Signup() {
                       onChange={onChangehandler}
                       placeholder="Password"
                       required
-                      className="block w-full dark:text-zinc-700  text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full text-zinc-600  text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
                   </div>
                 </div>
