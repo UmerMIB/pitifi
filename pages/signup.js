@@ -42,11 +42,6 @@ export default function Signup() {
       {renderPage === false ? (
         <div className="flex min-h-full items-center justify-center py-9 px-4 sm:px-6 lg:px-8">
           <div className="w-full max-w-md shadow bg-white sm:rounded-lg">
-            {/* <div className="flex items-center justify-center py-3 bg-slate-100">
-              <p className="text-base font-medium">
-                Create your WebApp Account
-              </p>
-            </div> */}
             <div className="flex items-center justify-center my-6">
               <h3 className="text-3xl font-medium text-zinc-700 tracking-wider">
                 Sign Up
