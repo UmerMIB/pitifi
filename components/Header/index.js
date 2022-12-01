@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useCallback, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -42,7 +42,7 @@ export default function Header() {
   const openFullscreen = () => {
     let elem = document.documentElement;
     if (elem.requestFullscreen) {
-      elem.requestFullscreen();
+      elem.requestFullscreen().catch(() => {});
       setToggleScreen(true);
     } else if (elem.webkitRequestFullscreen) {
       /* Safari */
@@ -71,36 +71,56 @@ export default function Header() {
     }
   };
 
-  // useEffect(() => {
-  //   document.addEventListener("keydown", (event) => {
-  //     // if (event.key === "Escape") {
-  //     setToggleScreen(false);
-  //     closeFullscreen();
-  //     // }
-  //     console.log(`Key: ${event.key} with keycode has been pressed`);
-  //   });
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-  // const escFunction = useCallback((event) => {
-  //   if (event.keyCode === 27) {
-  //     console.log("----logic----");
-  //     setToggleScreen(false);
-  //     closeFullscreen();
-  //   }
-  // }, []);
-
   useEffect(() => {
-    document.addEventListener("keydown", detectKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    document.addEventListener("fullscreenchange", exitHandler, false);
+    document.addEventListener("webkitfullscreenchange", exitHandler, false);
+    document.addEventListener("mozfullscreenchange", exitHandler, false);
+    document.addEventListener("MSFullscreenChange", exitHandler, false);
+    document.addEventListener("keydown", detectKeyDown, false);
+    return () => {
+      document.removeEventListener("fullscreenchange", exitHandler, false);
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        exitHandler,
+        false
+      );
+      document.removeEventListener("mozfullscreenchange", exitHandler, false);
+      document.removeEventListener("MSFullscreenChange", exitHandler, false);
+      document.removeEventListener("keydown", detectKeyDown, false);
+    };
   }, []);
 
-  const detectKeyDown = (e) => {
-    if (e.key) {
+  const exitHandler = () => {
+    console.log("exit");
+    if (
+      !document.fullscreenElement &&
+      !document.webkitIsFullScreen &&
+      !document.mozFullScreen &&
+      !document.msFullscreenElement
+    ) {
       setToggleScreen(false);
+    } else if (
+      document.fullscreenElement &&
+      document.webkitIsFullScreen &&
+      document.mozFullScreen &&
+      document.msFullscreenElement
+    ) {
+      setToggleScreen(true);
+      // openFullscreen();
+    }
+  };
+
+  const detectKeyDown = (e) => {
+    if (e.key === "Escape") {
       closeFullscreen();
     }
-    console.log(`Key: ${e.key}`);
+    if (e.key === "F11") {
+      setToggleScreen(!toggleScreen);
+      // setToggleScreen(true);
+      console.log("aaa");
+      // openFullscreen();
+    }
+    console.log(`Key: ${e.key} ${e.keyCode}`);
   };
 
   const sidebarState = useSelector((state) => state.aside.sidebar);
@@ -209,6 +229,7 @@ export default function Header() {
                           />
                         ) : (
                           <BsFullscreenExit
+                            id="id"
                             className="text-xl text-[#4756b4] cursor-pointer"
                             onClick={closeFullscreen}
                           />
