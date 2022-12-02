@@ -12,6 +12,7 @@ const MyApp = ({ Component, ...rest }) => {
     if (typeof window !== "undefined") {
       setIsWindowActive(true);
       document.getElementsByTagName("html")[0].classList.add("dark");
+      document.getElementsByTagName("html")[0].setAttribute("lang", "en");
     }
   }, []);
 
