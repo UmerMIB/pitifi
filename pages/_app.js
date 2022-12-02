@@ -13,6 +13,10 @@ const MyApp = ({ Component, ...rest }) => {
       setIsWindowActive(true);
       document.getElementsByTagName("html")[0].classList.add("dark");
       document.getElementsByTagName("html")[0].setAttribute("lang", "en");
+      var x = document.createElement("title");
+      var t = document.createTextNode("WebApp");
+      x.appendChild(t);
+      document.head.appendChild(x);
     }
   }, []);
 
