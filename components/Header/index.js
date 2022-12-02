@@ -42,42 +42,57 @@ export default function Header() {
   const openFullscreen = () => {
     let elem = document.documentElement;
     if (elem.requestFullscreen) {
-      elem.requestFullscreen().catch(() => {});
-      setToggleScreen(true);
+      elem
+        .requestFullscreen()
+        .then(() => setToggleScreen(true))
+        .catch((err) => {
+          console.log(err);
+        });
     } else if (elem.webkitRequestFullscreen) {
       /* Safari */
-      elem.webkitRequestFullscreen();
-      setToggleScreen(true);
+      elem
+        .webkitRequestFullscreen()
+        .then(() => setToggleScreen(true))
+        .catch(() => {});
     } else if (elem.msRequestFullscreen) {
       /* IE11 */
-      elem.msRequestFullscreen();
-      setToggleScreen(true);
+      elem
+        .msRequestFullscreen()
+        .then(() => setToggleScreen(true))
+        .catch(() => {});
     }
   };
 
   /* Close fullscreen */
   const closeFullscreen = () => {
     if (document.exitFullscreen) {
-      document.exitFullscreen().catch(() => {});
-      setToggleScreen(false);
+      document
+        .exitFullscreen()
+        .then(() => setToggleScreen(false))
+        .catch(() => {});
     } else if (document.webkitExitFullscreen) {
       /* Safari */
-      document.webkitExitFullscreen();
-      setToggleScreen(false);
+      document
+        .webkitExitFullscreen()
+        .then(() => setToggleScreen(false))
+        .catch(() => {});
     } else if (document.msExitFullscreen) {
       /* IE11 */
-      document.msExitFullscreen();
-      setToggleScreen(false);
+      document
+        .msExitFullscreen()
+        .then(() => setToggleScreen(false))
+        .catch(() => {});
     }
   };
 
   useEffect(() => {
+    document.addEventListener("keydown", detectKeyDown, false);
     document.addEventListener("fullscreenchange", exitHandler, false);
     document.addEventListener("webkitfullscreenchange", exitHandler, false);
     document.addEventListener("mozfullscreenchange", exitHandler, false);
     document.addEventListener("MSFullscreenChange", exitHandler, false);
-    document.addEventListener("keydown", detectKeyDown, false);
     return () => {
+      document.removeEventListener("keydown", detectKeyDown, false);
       document.removeEventListener("fullscreenchange", exitHandler, false);
       document.removeEventListener(
         "webkitfullscreenchange",
@@ -86,12 +101,10 @@ export default function Header() {
       );
       document.removeEventListener("mozfullscreenchange", exitHandler, false);
       document.removeEventListener("MSFullscreenChange", exitHandler, false);
-      document.removeEventListener("keydown", detectKeyDown, false);
     };
   }, []);
 
   const exitHandler = () => {
-    console.log("exit");
     if (
       !document.fullscreenElement &&
       !document.webkitIsFullScreen &&
@@ -99,28 +112,11 @@ export default function Header() {
       !document.msFullscreenElement
     ) {
       setToggleScreen(false);
-    } else if (
-      document.fullscreenElement &&
-      document.webkitIsFullScreen &&
-      document.mozFullScreen &&
-      document.msFullscreenElement
-    ) {
-      setToggleScreen(true);
-      // openFullscreen();
     }
   };
 
   const detectKeyDown = (e) => {
-    if (e.key === "Escape") {
-      closeFullscreen();
-    }
-    if (e.key === "F11") {
-      setToggleScreen(!toggleScreen);
-      // setToggleScreen(true);
-      console.log("aaa");
-      // openFullscreen();
-    }
-    console.log(`Key: ${e.key} ${e.keyCode}`);
+    if (e.key == "F11") e.preventDefault();
   };
 
   const sidebarState = useSelector((state) => state.aside.sidebar);

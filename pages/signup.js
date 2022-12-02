@@ -59,8 +59,6 @@ export default function Signup() {
       }),
       onSubmit: (values, action) => {
         onClickChangeRender();
-        setRenderPage(true);
-        console.log(values);
         action.resetForm();
       },
     });

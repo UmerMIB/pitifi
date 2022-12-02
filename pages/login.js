@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Link from "next/link";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -12,8 +12,8 @@ export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const loginUser = useSelector((state) => state.login.loginList);
-  console.log(loginUser);
+  // const loginUser = useSelector((state) => state.login.loginList);
+  // console.log(loginUser);
 
   const authLoginUser = () => {
     localStorage.setItem("authenticated", true);
