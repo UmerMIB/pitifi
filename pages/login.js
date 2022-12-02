@@ -1,34 +1,51 @@
 import Header from "../components/Header";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { loginuser } from "../redux/slices/loginSlice";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+import { loginuser, adduser } from "../redux/slices/loginSlice";
 
 export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const loginUser = useSelector((state) => state.login.loginList);
+  // const loginUser = useSelector((state) => state.login.loginList);
+  // console.log(loginUser);
 
-  const [credetials, setCredetials] = useState({
+  const authLoginUser = () => {
+    localStorage.setItem("authenticated", true);
+    router.push("/properties");
+  };
+
+  const initialValues = {
     email: "",
     password: "",
-  });
-
-  const onChangehandler = (e) => {
-    setCredetials({ ...credetials, [e.target.name]: e.target.value });
   };
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    const { email, password } = credetials;
-    dispatch(loginuser({ email, password }));
-    if (loginUser) {
-      localStorage.setItem("authenticated", true);
-      router.push("/properties");
-    }
-  };
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema: Yup.object({
+        email: Yup.string()
+          .email("Invalid email address")
+          .required("Email Required"),
+        password: Yup.string()
+          .required("Password required")
+          .min(8, "Password must be atleast of 8 characters")
+          .matches(/[0-9]/, "Password requires a number")
+          .matches(/[a-z]/, "Password requires a lowercase letter")
+          .matches(/[A-Z]/, "Password requires an uppercase letter")
+          .matches(/[^\w]/, "Password requires a symbol"),
+      }),
+      onSubmit: (values, action) => {
+        dispatch(loginuser(true));
+        authLoginUser();
+        action.resetForm();
+      },
+    });
 
   return (
     <>
@@ -42,7 +59,7 @@ export default function Login() {
               </h3>
             </div>
             <form
-              onSubmit={submitForm}
+              onSubmit={handleSubmit}
               className="space-y-6"
               action="#"
               method="POST"
@@ -54,12 +71,15 @@ export default function Login() {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    value={credetials.email}
-                    onChange={onChangehandler}
                     placeholder="Email Address"
-                    required
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     className="block w-full text-zinc-600   text-xl appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
+                  {errors.email && touched.email ? (
+                    <p className="text-[#b22b27] text-[1rem]">{errors.email}</p>
+                  ) : null}
                 </div>
               </div>
 
@@ -70,12 +90,17 @@ export default function Login() {
                     name="password"
                     type="password"
                     autoComplete="current-password"
-                    value={credetials.password}
-                    onChange={onChangehandler}
                     placeholder="Password"
-                    required
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     className="block w-full text-zinc-600  appearance-none rounded-md border border-gray-300 px-3 py-3 placeholder-gray-400 placeholder:text-lg shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
+                  {errors.password && touched.password ? (
+                    <p className="text-[#b22b27] text-[1rem]">
+                      {errors.password}
+                    </p>
+                  ) : null}
                 </div>
               </div>
 
@@ -126,6 +151,7 @@ export default function Login() {
                 <Link
                   href="/signup"
                   className="group relative flex w-24 justify-center text-lg underline underline-offset-3 py-3 px-4 font-semibold text-[#404c9c] hover:text-[#5b6ace]"
+                  onClick={() => dispatch(adduser(false))}
                 >
                   Sign up
                 </Link>

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { opensidebar } from "../../redux/slices/sidebarSlice";
+import { adduser, loginuser } from "../../redux/slices/loginSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -27,6 +28,7 @@ export default function Header() {
 
   const logoutHandle = () => {
     localStorage.removeItem("authenticated");
+    dispatch(loginuser(false));
     router.push("/login");
   };
 
@@ -40,33 +42,81 @@ export default function Header() {
   const openFullscreen = () => {
     let elem = document.documentElement;
     if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-      setToggleScreen(true);
+      elem
+        .requestFullscreen()
+        .then(() => setToggleScreen(true))
+        .catch((err) => {
+          console.log(err);
+        });
     } else if (elem.webkitRequestFullscreen) {
       /* Safari */
-      elem.webkitRequestFullscreen();
-      setToggleScreen(true);
+      elem
+        .webkitRequestFullscreen()
+        .then(() => setToggleScreen(true))
+        .catch(() => {});
     } else if (elem.msRequestFullscreen) {
       /* IE11 */
-      elem.msRequestFullscreen();
-      setToggleScreen(true);
+      elem
+        .msRequestFullscreen()
+        .then(() => setToggleScreen(true))
+        .catch(() => {});
     }
   };
 
   /* Close fullscreen */
   const closeFullscreen = () => {
     if (document.exitFullscreen) {
-      document.exitFullscreen().catch(() => {});
-      setToggleScreen(false);
+      document
+        .exitFullscreen()
+        .then(() => setToggleScreen(false))
+        .catch(() => {});
     } else if (document.webkitExitFullscreen) {
       /* Safari */
-      document.webkitExitFullscreen();
-      setToggleScreen(false);
+      document
+        .webkitExitFullscreen()
+        .then(() => setToggleScreen(false))
+        .catch(() => {});
     } else if (document.msExitFullscreen) {
       /* IE11 */
-      document.msExitFullscreen();
+      document
+        .msExitFullscreen()
+        .then(() => setToggleScreen(false))
+        .catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", detectKeyDown, false);
+    document.addEventListener("fullscreenchange", exitHandler, false);
+    document.addEventListener("webkitfullscreenchange", exitHandler, false);
+    document.addEventListener("mozfullscreenchange", exitHandler, false);
+    document.addEventListener("MSFullscreenChange", exitHandler, false);
+    return () => {
+      document.removeEventListener("keydown", detectKeyDown, false);
+      document.removeEventListener("fullscreenchange", exitHandler, false);
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        exitHandler,
+        false
+      );
+      document.removeEventListener("mozfullscreenchange", exitHandler, false);
+      document.removeEventListener("MSFullscreenChange", exitHandler, false);
+    };
+  }, []);
+
+  const exitHandler = () => {
+    if (
+      !document.fullscreenElement &&
+      !document.webkitIsFullScreen &&
+      !document.mozFullScreen &&
+      !document.msFullscreenElement
+    ) {
       setToggleScreen(false);
     }
+  };
+
+  const detectKeyDown = (e) => {
+    if (e.key == "F11") e.preventDefault();
   };
 
   const sidebarState = useSelector((state) => state.aside.sidebar);
@@ -175,6 +225,7 @@ export default function Header() {
                           />
                         ) : (
                           <BsFullscreenExit
+                            id="id"
                             className="text-xl text-[#4756b4] cursor-pointer"
                             onClick={closeFullscreen}
                           />
@@ -258,6 +309,7 @@ export default function Header() {
                     <Link
                       href="/login"
                       className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                      onClick={() => dispatch(adduser(false))}
                     >
                       Sign in
                     </Link>
@@ -265,6 +317,7 @@ export default function Header() {
                       href="/signup"
                       className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-[#404c9c] px-4 py-2 text-base font-medium text-white shadow-sm
                      hover:bg-[#4756b4]"
+                      onClick={() => dispatch(adduser(false))}
                     >
                       Sign up
                     </Link>
